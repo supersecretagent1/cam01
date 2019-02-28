@@ -1,0 +1,8 @@
+node_modules/
+glTF-Sample-Models/
+arjs-demo/
+.DS_Store
+*.pem
+package.json
+yarn.lock
+server.js
