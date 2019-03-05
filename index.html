@@ -4,9 +4,23 @@
   <meta charset="UTF-8" />
   <title>Camera 01</title>
 </head>
+<style>
+  .photo {
+    border-radius: 100%;
+    border: 3px solid #C4C4C4;
+    background-color: #eee;
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+  }
+</style>
 <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
 <body style='margin : 0px; overflow: hidden;'>
+  <button type="button" class="photo"></button>
+
   <a-scene embedded arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3; sourceType: webcam; debugUIEnabled: false;'>
     <a-assets>
       <a-asset-item id="testModel" src="https://cdn.aframe.io/test-models/models/glTF-2.0/virtualcity/VC.gltf"></a-asset-item>
@@ -32,5 +46,11 @@
     </a-marker>
     <a-entity camera></a-entity>
 </a-scene>
+
+<script>
+  document.querySelector('button.photo').addEventListener('click', () => {
+    document.querySelector('a-scene').components.screenshot.capture('perspective');
+  });
+</script>
 </body>
 </html>
