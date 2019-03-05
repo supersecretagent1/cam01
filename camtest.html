@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Camera 01</title>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+<video id="player" controls autoplay></video>
+<script>
+  const player = document.getElementById('player');
+
+  const constraints = {
+    video: true,
+    audio: false,
+  };
+
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+        console.log(stream);
+      player.srcObject = stream;
+    })
+    .catch(e => { console.log(e); });
+</script>
+</body>
+</html>
