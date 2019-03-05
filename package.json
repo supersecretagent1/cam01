@@ -1,0 +1,11 @@
+{
+    "name": "supersecret",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.html",
+    "scripts": {
+        "build": "node ./build/build.js"
+    },
+    "author": "",
+    "dependencies": {}
+}

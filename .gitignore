@@ -1,8 +1,8 @@
 node_modules/
 glTF-Sample-Models/
 arjs-demo/
+artoolkit5/
 .DS_Store
 *.pem
-package.json
 yarn.lock
 server.js
