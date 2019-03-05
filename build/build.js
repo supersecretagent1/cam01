@@ -24,6 +24,7 @@ const layoutTemplate = fs.readFileSync(
     path.join(__dirname, 'layout.html'),
     'utf8'
 );
+const baseUrl = 'https://supersecretagent1.github.io/cam01/';
 
 const buildPage = (model) => {
     let content = '';
@@ -57,15 +58,20 @@ const buildPage = (model) => {
 
     fs.writeFileSync(
         path.join(__dirname, '..', `${model.name}.html`),
-        layoutTemplate.replace('{{content}}', content),
-        (err) => {
-            if (err) {
-                console.error(`beda ${model.name}`);
-                console.log(model);
-            }
-            console.log(`win ${model.name}`);
-        }
+        layoutTemplate.replace('{{content}}', content)
     );
+};
+
+const buildMapPage = () => {
+    let content = `
+    <p><a href="${baseUrl}">index</a></p>
+    `;
+
+    for (let i = 0; i <= 63; i++) {
+        content += `<p><a href="${baseUrl + i}.html">${i}</a></p>`;
+    }
+
+    fs.writeFileSync(path.join(__dirname, '..', `links.html`), content);
 };
 
 for (let i = 0; i <= 63; i++) {
@@ -77,3 +83,5 @@ for (let i = 0; i <= 63; i++) {
         color: colors[Math.floor(Math.random() * colors.length)],
     });
 }
+
+buildMapPage();
