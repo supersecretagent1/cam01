@@ -51,7 +51,7 @@
 
 <script>
   document.querySelector('button.photo').addEventListener('click', () => {
-    document.querySelector('a-scene').components.screenshot.capture('perspective');
+    document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
   });
 </script>
 </body>
