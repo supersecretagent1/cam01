@@ -4,7 +4,7 @@ const path = require('path');
 const itemType = {
     box: 'box',
     model: 'model',
-    text: 'text',
+    // text: 'text',
     img: 'img',
 };
 
@@ -13,7 +13,7 @@ const db = [
         name: '',
         markerValue: '',
         itemType: itemType.model,
-        modelSrc: '',
+        src: '',
         rotation: '',
         position: '',
         color: '',
@@ -39,11 +39,18 @@ const buildPage = (model) => {
                 'yellow'}; opacity: 0.5'></a-box>
             </a-marker>`;
             break;
+        case itemType.img:
+            content = `
+            <a-marker type='barcode' value='${model.markerValue}'>
+                <a-image src="${model.src}" rotation="${model.rotation ||
+                ''}" position="${model.position || ''}"></a-image>
+            </a-marker>`;
+            break;
         case itemType.model:
             content = `
             <a-assets>
                 <a-asset-item id="${model.name}" src="${
-                model.modelSrc
+                model.src
             }"></a-asset-item>
             </a-assets>
             <a-marker type='barcode' value='${model.markerValue}'>
@@ -64,24 +71,30 @@ const buildPage = (model) => {
 
 const buildMapPage = () => {
     let content = `
-    <p><a href="${baseUrl}">index</a></p>
+    <h2 style="margin: 20px;"><a href="${baseUrl}">index</a></h2>
     `;
 
     for (let i = 0; i <= 63; i++) {
-        content += `<p><a href="${baseUrl + i}.html">${i}</a></p>`;
+        content += `<h2 style="margin: 20px;"><a href="${baseUrl +
+            i}.html">${i}</a></h2>`;
     }
 
     fs.writeFileSync(path.join(__dirname, '..', `links.html`), content);
 };
 
-for (let i = 0; i <= 63; i++) {
-    const colors = ['red', 'green', 'blue'];
-    buildPage({
-        name: i,
-        markerValue: i,
-        itemType: itemType.box,
-        color: colors[Math.floor(Math.random() * colors.length)],
-    });
-}
+const buildTestPages = () => {
+    for (let i = 0; i <= 63; i++) {
+        const colors = ['red', 'green', 'blue'];
+        buildPage({
+            name: i,
+            markerValue: i,
+            itemType: itemType.box,
+            color: colors[Math.floor(Math.random() * colors.length)],
+        });
+    }
+};
 
+const buildQuestPages = () => {};
+
+// buildTestPages();
 buildMapPage();
