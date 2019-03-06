@@ -39,6 +39,12 @@ const db = [
         itemType: itemType.model,
         src: 'models/unicorn.glb',
     },
+    {
+        name: 'trafaretto',
+        markerValue: '5',
+        itemType: itemType.model,
+        src: 'models/zombie.glb',
+    },
 ];
 
 const layoutTemplate = fs.readFileSync(
