@@ -24,7 +24,7 @@ const db = [
         name: 'inner_qr',
         markerValue: '0',
         itemType: itemType.img,
-        src: 'cam01/markers/1.png',
+        src: '/cam01/markers/1.png',
     },
 ];
 
