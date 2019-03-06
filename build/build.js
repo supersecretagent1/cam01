@@ -4,7 +4,7 @@ const path = require('path');
 const itemType = {
     box: 'box',
     model: 'model',
-    // text: 'text',
+    text: 'text',
     img: 'img',
 };
 
@@ -17,6 +17,7 @@ const db = [
         rotation: '',
         position: '',
         color: '',
+        text: '',
     },
 ];
 
@@ -26,7 +27,7 @@ const layoutTemplate = fs.readFileSync(
 );
 const baseUrl = 'https://supersecretagent1.github.io/cam01/';
 
-const buildPage = (model) => {
+const modelToHtml = (model) => {
     let content = '';
 
     switch (model.itemType) {
@@ -37,6 +38,14 @@ const buildPage = (model) => {
                     ''}' rotation="${model.rotation ||
                 ''}" material='color: ${model.color ||
                 'yellow'}; opacity: 0.5'></a-box>
+            </a-marker>`;
+            break;
+        case itemType.text:
+            content = `
+            <a-marker type='barcode' value='${model.markerValue}'>
+                <a-text value="${model.text}" rotation="${model.rotation ||
+                '-90 0 0'}" position="${model.position ||
+                ''} color="red"></a-text>
             </a-marker>`;
             break;
         case itemType.img:
@@ -63,6 +72,12 @@ const buildPage = (model) => {
             break;
     }
 
+    return content;
+};
+
+const buildPage = (model) => {
+    const content = modelToHtml(model);
+
     fs.writeFileSync(
         path.join(__dirname, '..', `${model.name}.html`),
         layoutTemplate.replace('{{content}}', content)
@@ -72,6 +87,8 @@ const buildPage = (model) => {
 const buildMapPage = () => {
     let content = `
     <h2 style="margin: 20px;"><a href="${baseUrl}">index</a></h2>
+    <h2 style="margin: 20px;"><a href="${baseUrl +
+        'number_detector.html'}">number detector</a></h2>
     `;
 
     for (let i = 0; i <= 63; i++) {
@@ -94,7 +111,26 @@ const buildTestPages = () => {
     }
 };
 
+const buildDetectionPage = () => {
+    let content = '';
+    for (let i = 0; i <= 63; i++) {
+        content += modelToHtml({
+            name: i,
+            markerValue: i,
+            itemType: itemType.text,
+            text: i,
+        });
+    }
+
+    fs.writeFileSync(
+        path.join(__dirname, '..', `number_detector.html`),
+        layoutTemplate.replace('{{content}}', content)
+    );
+};
+
 const buildQuestPages = () => {};
 
 // buildTestPages();
+// buildDetectionPage();
+buildQuestPages();
 buildMapPage();
