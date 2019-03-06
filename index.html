@@ -29,20 +29,25 @@
       <a-asset-item id="fishTestModel" src="models/BarramundiFish/BarramundiFish.gltf"></a-asset-item>
       <a-asset-item id="catModel" src="models/cat/cat.glb"></a-asset-item>
       <a-asset-item id="faceModel" src="models/face/Thonker.glb"></a-asset-item>
+      <a-asset-item id="octopus" src="models/octopus.glb"></a-asset-item>
+      <a-asset-item id="pig" src="models/pig.glb"></a-asset-item>
+      <a-asset-item id="fly" src="models/fly.glb"></a-asset-item>
+      <a-asset-item id="unicorn" src="models/unicorn.glb"></a-asset-item>
+      <a-asset-item id="zombie" src="models/zombie.glb"></a-asset-item>
     </a-assets>
-    
+
     <a-marker preset='hiro'>
-        <a-entity gltf-model="#faceModel" modify-materials></a-entity>
+        <a-entity gltf-model="#zombie" modify-materials></a-entity>
     </a-marker>
 
     <a-marker type='barcode' value='0'>
       <a-box position='0 0.5 0' material='color: red;opacity: 0.5'></a-box>
     </a-marker>
-    
+
     <a-marker type='barcode' value='10'>
       <a-text value="Hello, World!" rotation="-90 0 0" color="red"></a-text>
     </a-marker>
-    
+
     <a-marker type='barcode' value='2'>
       <a-image src="https://images.unsplash.com/photo-1551151692-15f5e138754e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" rotation="-90 0 0"></a-image>
     </a-marker>
