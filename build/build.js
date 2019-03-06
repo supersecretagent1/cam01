@@ -112,6 +112,7 @@ const buildMapPage = () => {
     <h2 style="margin: 20px;"><a href="${baseUrl}inner_qr.html">inner qr</a></h2>
     <h2 style="margin: 20px;"><a href="${baseUrl}locations.html">locations</a></h2>
     <h2 style="margin: 20px;"><a href="${baseUrl}trafaretto.html">trafaretto</a></h2>
+    <h2 style="margin: 20px;"><a href="${baseUrl}tetris.html">tetris</a></h2>
     `;
 
     for (const model of db) {
