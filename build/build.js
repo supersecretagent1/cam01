@@ -33,6 +33,12 @@ const db = [
         src: 'models/kir.png',
         rotation: '-70 0 0',
     },
+    {
+        name: 'fifteenshkee',
+        markerValue: '20',
+        itemType: itemType.model,
+        src: 'models/unicorn.glb',
+    },
 ];
 
 const layoutTemplate = fs.readFileSync(
