@@ -25,7 +25,6 @@ const db = [
         markerValue: '4',
         itemType: itemType.model,
         src: 'models/octopus.glb',
-        rotation: '0 180 0',
     },
 ];
 
