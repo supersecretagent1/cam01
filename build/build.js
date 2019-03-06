@@ -39,12 +39,6 @@ const db = [
         itemType: itemType.model,
         src: 'models/unicorn.glb',
     },
-    {
-        name: 'trafaretto',
-        markerValue: '5',
-        itemType: itemType.model,
-        src: 'models/zombie.glb',
-    },
 ];
 
 const layoutTemplate = fs.readFileSync(
@@ -117,13 +111,12 @@ const buildMapPage = () => {
         'number_detector.html'}">number detector</a></h2>
     <h2 style="margin: 20px;"><a href="${baseUrl}inner_qr.html">inner qr</a></h2>
     <h2 style="margin: 20px;"><a href="${baseUrl}locations.html">locations</a></h2>
+    <h2 style="margin: 20px;"><a href="${baseUrl}trafaretto.html">trafaretto</a></h2>
     `;
 
     for (const model of db) {
-        if (model && model.name) {
-            content += `<h2 style="margin: 20px;"><a href="${baseUrl +
-                model.name}.html">${model.name}</a></h2>`;
-        }
+        content += `<h2 style="margin: 20px;"><a href="${baseUrl +
+            model.name}.html">${model.name}</a></h2>`;
     }
 
     for (let i = 0; i <= 63; i++) {
