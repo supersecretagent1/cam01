@@ -19,14 +19,7 @@ const spec = {
     text: '',
 };
 
-const db = [
-    {
-        name: 'inner_qr',
-        markerValue: '0',
-        itemType: itemType.img,
-        src: '/cam01/markers/1.png',
-    },
-];
+const db = [{}];
 
 const layoutTemplate = fs.readFileSync(
     path.join(__dirname, 'layout.html'),
@@ -96,11 +89,14 @@ const buildMapPage = () => {
     <h2 style="margin: 20px;"><a href="${baseUrl}">index</a></h2>
     <h2 style="margin: 20px;"><a href="${baseUrl +
         'number_detector.html'}">number detector</a></h2>
+        <h2 style="margin: 20px;"><a href="${baseUrl}inner_qr.html">inner qr</a></h2>
     `;
 
     for (const model of db) {
-        content += `<h2 style="margin: 20px;"><a href="${baseUrl +
-            model.name}.html">${model.name}</a></h2>`;
+        if (model && model.name) {
+            content += `<h2 style="margin: 20px;"><a href="${baseUrl +
+                model.name}.html">${model.name}</a></h2>`;
+        }
     }
 
     for (let i = 0; i <= 63; i++) {

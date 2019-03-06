@@ -8,10 +8,17 @@
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene embedded arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3; sourceType: webcam; debugUIEnabled: false;'>
-    
-            <a-marker type='barcode' value='0'>
-                <a-image src="/cam01/markers/1.png" rotation="-90 0 0" position=""></a-image>
-            </a-marker>
+    <a-assets>
+      <a-asset-item id="butterfly" src="models/fly.glb"></a-asset-item>
+    </a-assets>
+
+    <a-marker type='barcode' value='0'>
+        <a-image src="/cam01/markers/1.png" rotation="-90 0 0" position=""></a-image>
+    </a-marker>
+
+    <a-marker type='barcode' value='1'>
+      <a-entity gltf-model="#butterfly" modify-materials></a-entity>
+    </a-marker>
     <a-entity camera></a-entity>
 </a-scene>
 </body>
