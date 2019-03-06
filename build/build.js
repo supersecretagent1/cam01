@@ -59,7 +59,7 @@ const modelToHtml = (model) => {
             content = `
             <a-marker type='barcode' value='${model.markerValue}'>
                 <a-image src="${model.src}" rotation="${model.rotation ||
-                '90 0 0'}" position="${model.position || ''}"></a-image>
+                '-90 0 0'}" position="${model.position || ''}"></a-image>
             </a-marker>`;
             break;
         case itemType.model:
