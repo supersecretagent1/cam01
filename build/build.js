@@ -19,7 +19,15 @@ const spec = {
     text: '',
 };
 
-const db = [{}];
+const db = [
+    {
+        name: 'mosaic',
+        markerValue: '4',
+        itemType: itemType.model,
+        src: 'models/octopus.glb',
+        rotation: '0 180 0',
+    },
+];
 
 const layoutTemplate = fs.readFileSync(
     path.join(__dirname, 'layout.html'),
