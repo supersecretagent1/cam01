@@ -26,6 +26,13 @@ const db = [
         itemType: itemType.model,
         src: 'models/octopus.glb',
     },
+    {
+        name: 'song',
+        markerValue: '14',
+        itemType: itemType.img,
+        src: 'models/kir.png',
+        rotation: '0 0 0',
+    },
 ];
 
 const layoutTemplate = fs.readFileSync(
