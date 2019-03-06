@@ -31,7 +31,7 @@ const db = [
         markerValue: '14',
         itemType: itemType.img,
         src: 'models/kir.png',
-        rotation: '0 0 0',
+        rotation: '-70 0 0',
     },
 ];
 
