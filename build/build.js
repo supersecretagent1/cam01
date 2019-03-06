@@ -8,16 +8,23 @@ const itemType = {
     img: 'img',
 };
 
+const spec = {
+    name: '',
+    markerValue: '',
+    itemType: itemType.model,
+    src: '',
+    rotation: '',
+    position: '',
+    color: '',
+    text: '',
+};
+
 const db = [
     {
-        name: '',
-        markerValue: '',
-        itemType: itemType.model,
-        src: '',
-        rotation: '',
-        position: '',
-        color: '',
-        text: '',
+        name: 'inner_qr',
+        markerValue: '0',
+        itemType: itemType.img,
+        src: 'cam01/markers/1.png',
     },
 ];
 
@@ -52,7 +59,7 @@ const modelToHtml = (model) => {
             content = `
             <a-marker type='barcode' value='${model.markerValue}'>
                 <a-image src="${model.src}" rotation="${model.rotation ||
-                ''}" position="${model.position || ''}"></a-image>
+                '-90 0 0'}" position="${model.position || ''}"></a-image>
             </a-marker>`;
             break;
         case itemType.model:
@@ -91,6 +98,11 @@ const buildMapPage = () => {
         'number_detector.html'}">number detector</a></h2>
     `;
 
+    for (const model of db) {
+        content += `<h2 style="margin: 20px;"><a href="${baseUrl +
+            model.name}.html">${model.name}</a></h2>`;
+    }
+
     for (let i = 0; i <= 63; i++) {
         content += `<h2 style="margin: 20px;"><a href="${baseUrl +
             i}.html">${i}</a></h2>`;
@@ -128,7 +140,11 @@ const buildDetectionPage = () => {
     );
 };
 
-const buildQuestPages = () => {};
+const buildQuestPages = () => {
+    for (const model of db) {
+        buildPage(model);
+    }
+};
 
 // buildTestPages();
 // buildDetectionPage();
